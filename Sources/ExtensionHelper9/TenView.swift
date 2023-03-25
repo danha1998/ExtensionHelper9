@@ -9,11 +9,11 @@ import SwiftUI
 import WebKit
 
 @available(iOS 14.0, *)
-struct TenView: View {
+public struct TenView: View {
     @State var is_five_click_button = false
     @State var is_five_get_html_ads: String = ""
-
-    var body: some View {
+    public init() { }
+    public var body: some View {
         ZStack { Color.white.ignoresSafeArea()
             if is_five_get_html_ads.isEmpty {
                 ProgressView("We're loading your data...").foregroundColor(.gray).opacity(0.8)
