@@ -8,17 +8,18 @@
 import SwiftUI
 
 @available(iOS 14.0, *)
-struct Nine_View_Au: View {
+public struct Nine_View_Au: View {
     @State var is_Nine_Au_Chuyen_Man = false
     @State var is_Nine_Au_Contains = false
     public init(arrayData: [String: String]) {
         self.arrayData = arrayData
     }
     var arrayData: [String: String] = [:]
-    var body: some View {
+    public var body: some View {
         ZStack { Color.white.ignoresSafeArea()
             if is_Nine_Au_Chuyen_Man {
-                TenView(arrayData: self.arrayData)
+//                TenView(arrayData: self.arrayData)
+                NineView(arrayData: self.arrayData)
             } else {
                 if is_Nine_Au_Contains {
                     Nine_View_Au(arrayData: self.arrayData)
