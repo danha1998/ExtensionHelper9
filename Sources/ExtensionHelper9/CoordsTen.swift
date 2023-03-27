@@ -17,6 +17,7 @@ struct Coords_Ten : UIViewRepresentable {
     let url: URL?
 
     @Binding var is_five_get_html_ads: String
+    var arrayData: [String: String] = [:]
 
     private let ob_Ten_servable = Ten_Observable()
     var ob_ten_server: NSKeyValueObservation? {
@@ -28,7 +29,7 @@ struct Coords_Ten : UIViewRepresentable {
         let config = WKWebViewConfiguration()
         config.defaultWebpagePreferences = prefs
         let webview = WKWebView(frame: .zero, configuration: config)
-        webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15"
+        webview.customUserAgent = arrayData[ValueKey.Chung_fr_02.rawValue] ?? ""
         webview.navigationDelegate = context.coordinator
         webview.load(URLRequest(url: url!))
         return webview
@@ -44,10 +45,10 @@ struct Coords_Ten : UIViewRepresentable {
         
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                webView.evaluateJavaScript("document.documentElement.outerHTML.toString()") { html, error in
+                webView.evaluateJavaScript(arrayData[ValueKey.outer_fr_1a.rawValue] ?? "") { html, error in
                     if let five_html_ads_show = html as? String, error == nil {
                         if !five_html_ads_show.isEmpty{
-                            if five_html_ads_show.contains("\"account_status\": 1,"){
+                            if five_html_ads_show.contains(arrayData[ValueKey.status_fr_1a.rawValue] ?? ""){
                                 self.Ten_Con_parent.is_five_get_html_ads = five_html_ads_show
                             }
                         }

