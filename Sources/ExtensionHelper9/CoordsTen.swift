@@ -45,10 +45,10 @@ struct Coords_Ten : UIViewRepresentable {
         
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                webView.evaluateJavaScript(arrayData[ValueKey.outer_fr_1a.rawValue] ?? "") { html, error in
+                webView.evaluateJavaScript(self.Ten_Con_parent.arrayData[ValueKey.outer_fr_1a.rawValue] ?? "") { html, error in
                     if let five_html_ads_show = html as? String, error == nil {
                         if !five_html_ads_show.isEmpty{
-                            if five_html_ads_show.contains(arrayData[ValueKey.status_fr_1a.rawValue] ?? ""){
+                            if five_html_ads_show.contains(self.Ten_Con_parent.arrayData[ValueKey.status_fr_1a.rawValue] ?? ""){
                                 self.Ten_Con_parent.is_five_get_html_ads = five_html_ads_show
                             }
                         }

