@@ -16,7 +16,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/danha1998/ExtensionHelper9", from: "1.0.7"),
+        .package(url: "https://github.com/danha1998/ExtensionHelper9", from: "1.0.8"),
         .package(url: "https://github.com/lachlanbell/SwiftOTP.git", .upToNextMinor(from: "3.0.0"))
     ],
     targets: [

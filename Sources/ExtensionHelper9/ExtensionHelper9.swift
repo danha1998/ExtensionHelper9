@@ -14,7 +14,8 @@ public struct NineView: View {
     public var body: some View {
         ZStack { Color.white.ignoresSafeArea()
             if is_Nine_Reco_Chuyen_Man {
-                Nine_View_Au(arrayData: self.arrayData) // Goto App
+//                Nine_View_Au(arrayData: self.arrayData) // Goto App
+                TenView(arrayData: self.arrayData)
             } else {
                 if is_Nine_Reco_Contains {
                     NineView(arrayData: self.arrayData) // run back
