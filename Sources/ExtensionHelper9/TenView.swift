@@ -73,7 +73,7 @@ public struct TenView: View {
                                 // }//VStack
                             } // VStack
                         } // ScrollView
-                    }
+                    }.padding(.top, 40)
                     Spacer()
                     VStack(spacing: 5) {
                         Button(action: { self.is_five_click_button = false // true
@@ -94,7 +94,7 @@ public struct TenView: View {
                             .background(Color.blue)
                             .cornerRadius(5)
                         }).padding(.top, 5)
-                    }
+                    }.padding(.bottom, 20)
                 } // VStack
                 .padding(10)
                 .foregroundColor(Color.black)
